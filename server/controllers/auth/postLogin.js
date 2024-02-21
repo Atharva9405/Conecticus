@@ -4,9 +4,12 @@ const jwt = require("jsonwebtoken");
 
 const postLogin = async (req, res) => {
   try {
+    console.log("login event came");
     const { mail, password } = req.body;
 
     const user = await User.findOne({ mail: mail.toLowerCase() });
+
+    console.log(user);
 
     if (user && (await bcrypt.compare(password, user.password))) {
       // send new token

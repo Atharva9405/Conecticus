@@ -6,8 +6,11 @@ const postRegister = async (req, res) => {
   try {
     const { username, mail, password } = req.body;
 
+    console.log("user register request came");
     // check if user exists
     const userExists = await User.exists({ mail: mail.toLowerCase() });
+
+    console.log(userExists);
 
     if (userExists) {
       return res.status(409).send("E-mail already in use.");

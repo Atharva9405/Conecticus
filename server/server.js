@@ -2,13 +2,13 @@ const express = require("express");
 const http = require("http");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const authRoutes = require("./routes/authroutes");
 require("dotenv").config();
+
+const authRoutes = require("./routes/authRoutes");
 
 const PORT = process.env.PORT || 8000;
 
 const app = express();
-
 app.use(express.json());
 app.use(cors());
 
@@ -22,7 +22,7 @@ mongoose
   .then(() => {
     server.listen(PORT, () => {
       console.log(`Server is listening on ${PORT}`);
-      console.log("database connected")
+      console.log("Datababase connected successfully!")
     });
   })
   .catch((err) => {
